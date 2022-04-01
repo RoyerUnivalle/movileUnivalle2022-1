@@ -38,4 +38,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Interfaz" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.example.login.fragments.FragmentButtonAdds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
