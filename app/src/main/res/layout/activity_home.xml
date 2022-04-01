@@ -27,9 +27,11 @@
         android:layout_height="wrap_content"
         android:onClick="contar"
         android:text="Contar" />
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.example.login.fragments.FragmentButtonAdds"
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:id="@+id/contenedorFragment">
+    </FrameLayout>
+
 </LinearLayout>
