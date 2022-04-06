@@ -27,6 +27,12 @@
         android:layout_height="wrap_content"
         android:onClick="contar"
         android:text="Contar" />
+    <Button
+        android:id="@+id/btnPintar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="pintar"
+        android:text="Pintar" />
 
     <FrameLayout
         android:layout_width="match_parent"
