@@ -38,6 +38,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Interfaz" />
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="dataVolley"
+        android:text="http" />
+
+    <EditText
+        android:id="@+id/edRespuestaHTTP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
