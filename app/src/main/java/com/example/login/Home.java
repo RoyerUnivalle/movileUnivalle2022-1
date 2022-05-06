@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.login.fragments.FragmentButtonAdds;
+import com.example.login.services.MyService;
 
 import java.time.Instant;
 
@@ -102,6 +103,11 @@ public class Home extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(), "Terminé", Toast.LENGTH_LONG).show();
         objPintar = new Pintar();
         objPintar.execute();
+    }
+
+    public void iniciarServicio(View p){
+     Intent irService = new Intent(this, MyService.class);
+     startService(irService);
     }
 
     public int aleatorio() {
