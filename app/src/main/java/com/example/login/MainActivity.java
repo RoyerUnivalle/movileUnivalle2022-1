@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.login.connection.Connection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // instancias
     EditText ed1, ed2,edRespuestaHTTP;
     Button btn2,btn3;
+    Connection objConnection;
+    SQLiteDatabase db;
     //RequestQueue queue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         btn3.setOnClickListener(this); //<--interfaz
+        objConnection = new Connection(this,"estudiantes",null,1);
+        if(objConnection != null){
+            Toast.makeText(this,"BD Created", Toast.LENGTH_SHORT).show();
+        }
+        db = objConnection.getWritableDatabase();
     }
 
     public void saludar(View l){
@@ -118,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 //eventos += jsonArray[]
                                 JSONObject jsonObject2 = jsonArray.getJSONObject(i);
                                 eventos += jsonObject2.getString("nombre_evento") +"\n";
+                                db.execSQL("insert into juiciosos (id,name) values ("+(i+1)+",'"+jsonObject2.getString("nombre_evento")+"')");
                             }
                             edRespuestaHTTP.setText(eventos);
                             //cantidadRegistros=response.getInt("count");
