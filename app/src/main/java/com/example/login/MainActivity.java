@@ -2,9 +2,12 @@ package com.example.login;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -63,6 +66,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this,"BD Created", Toast.LENGTH_SHORT).show();
         }
         db = objConnection.getWritableDatabase();
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean is_wifi = false;
+        boolean is_4g = false;
+        NetworkInfo nwInfo = cm.getNetworkInfo(cm.getActiveNetwork());
+        if(nwInfo.getType() == ConnectivityManager.TYPE_WIFI){
+            //Toast.makeText(getApplicationContext(), "I am Wifi", Toast.LENGTH_SHORT).show();
+            Log.d("", " I am Wifi ");
+            is_wifi = true;
+        }else if (nwInfo.getType() == ConnectivityManager.TYPE_MOBILE){
+            is_4g = true;
+            //Toast.makeText(this, "I am Mobile", Toast.LENGTH_SHORT).show();
+            Log.d("", " I am Mobile");
+        }
+
+
     }
 
     public void saludar(View l){
